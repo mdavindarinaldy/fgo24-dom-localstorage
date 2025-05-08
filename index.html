@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 10svh 0;
+        }
+        form {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Selamat Datang</h1>
+    <form id="form">
+        <input type="text" placeholder="Masukkan Nama" name="name">
+        <button type="submit">submit</button>
+    </form>
+    <script>
+        const form = document.getElementById('form')
+        form.addEventListener('submit',function(event) {
+            event.preventDefault()
+            const name = event.target.name.value
+            window.localStorage.setItem('name', name)
+            const nameLocalStorage = window.localStorage.getItem('name')
+        })
+        const nameLocalStorage = window.localStorage.getItem('name')
+        if (nameLocalStorage) {
+            document.querySelector('body>h1').append(`, ${nameLocalStorage}!`)
+        }
+    </script>
+</body>
+</html>
